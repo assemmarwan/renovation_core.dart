@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:renovation_core/auth.dart';
 import 'package:renovation_core/core.dart';
-import 'package:renovation_core/meta.dart';
 import 'package:renovation_core/model.dart';
 import 'package:test/test.dart';
 
@@ -150,11 +149,6 @@ void main() {
 
       expect(response.isSuccess, true);
       expect(response.data.every((review) => review.name != null), true);
-      expect(
-          response.data.any((review) =>
-              review.reviewedByDoctypeDoc != null &&
-              review.reviewedByDoctypeDoc is DocType),
-          true);
     });
 
     test('should return list without non-existing linkfields', () async {
@@ -164,8 +158,6 @@ void main() {
 
       expect(response.isSuccess, true);
       expect(response.data.every((review) => review is RenovationReview), true);
-      expect(response.data.any((review) => review.reviewedByDoctypeDoc == null),
-          true);
     });
 
     test('should return list of user with filters type 1', () async {

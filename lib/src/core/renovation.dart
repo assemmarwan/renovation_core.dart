@@ -14,14 +14,10 @@ import '../core/errors.dart';
 import '../core/frappe/renovation.dart';
 import '../defaults/defaults.controller.dart';
 import '../defaults/frappe/frappe.defaults.controller.dart';
-import '../meta/frappe/frappe.meta.controller.dart';
-import '../meta/meta.controller.dart';
 import '../misc/message.bus.dart';
 import '../misc/socketio.dart';
 import '../model/frappe/frappe.model.controller.dart';
 import '../model/model.controller.dart';
-import '../perm/frappe/frappe.perm.controller.dart';
-import '../perm/perm.controller.dart';
 import '../storage/frappe/frappe.storage.controller.dart';
 import '../storage/storage.controller.dart';
 import '../translation/frappe/frappe.translation.controller.dart';
@@ -48,13 +44,7 @@ class Renovation {
   ModelController model;
 
   /// The `MetaController` instance
-  MetaController meta;
-
-  /// The `MetaController` instance
   StorageController storage;
-
-  /// The `PermissionController` instance
-  PermissionController perm;
 
   /// The `DefaultsController` instance
   DefaultsController defaults;
@@ -146,8 +136,6 @@ class Renovation {
       }
 
       model = FrappeModelController(config);
-      meta = FrappeMetaController(config);
-      perm = FrappePermissionController(config);
       storage = FrappeStorageController(config);
       defaults = FrappeDefaultsController(config);
       log = FrappeLogManager(config);
@@ -167,16 +155,12 @@ class Renovation {
   /// Clears the cache of the renovation controllers. Involved controllers:
   ///
   /// - [FrappeModelController]
-  /// - [FrappeMetaController]
   /// - [FrappeAuthController]
-  /// - [FrappePermissionController]
   /// - [Frappe]
   void clearCache() {
     for (final renovationController in <RenovationController>[
       model,
-      meta,
       auth,
-      perm,
       frappe
     ]) {
       if (renovationController != null) {

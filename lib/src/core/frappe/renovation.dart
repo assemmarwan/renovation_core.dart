@@ -2,9 +2,7 @@ import '../../auth/frappe/frappe.auth.controller.dart';
 import '../../backend/frappe/frappe.dart';
 import '../../backend/frappe/frappe.log.manager.dart';
 import '../../defaults/frappe/frappe.defaults.controller.dart';
-import '../../meta/frappe/frappe.meta.controller.dart';
 import '../../model/frappe/frappe.model.controller.dart';
-import '../../perm/frappe/frappe.perm.controller.dart';
 import '../../storage/frappe/frappe.storage.controller.dart';
 import '../../translation/frappe/frappe.translation.controller.dart';
 import '../renovation.dart';
@@ -19,12 +17,6 @@ FrappeStorageController getFrappeStorageController() =>
 
 FrappeAuthController getFrappeAuthController() =>
     Renovation()?.auth as FrappeAuthController;
-
-FrappeMetaController getFrappeMetaController() =>
-    Renovation()?.meta as FrappeMetaController;
-
-FrappePermissionController getFrappePermissionController() =>
-    Renovation()?.perm as FrappePermissionController;
 
 FrappeTranslationController getFrappeTranslationController() =>
     Renovation()?.translate as FrappeTranslationController;

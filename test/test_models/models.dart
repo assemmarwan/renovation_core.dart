@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:renovation_core/meta.dart';
 import 'package:renovation_core/model.dart';
 
 part 'models.g.dart';
@@ -32,9 +31,6 @@ class RenovationReview extends FrappeDocument {
   String reviewedByDoctype;
   @JsonKey(name: 'reviewed_by')
   String reviewedBy;
-
-  @JsonKey(name: 'reviewed_by_doctype_doc')
-  DocType reviewedByDoctypeDoc;
 
   @JsonKey(name: 'reviewed_doctype')
   String reviewedDoctype;

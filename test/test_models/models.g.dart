@@ -87,10 +87,6 @@ RenovationReview _$RenovationReviewFromJson(Map<String, dynamic> json) {
     ..modifiedBy = json['modified_by'] as String
     ..reviewedByDoctype = json['reviewed_by_doctype'] as String
     ..reviewedBy = json['reviewed_by'] as String
-    ..reviewedByDoctypeDoc = json['reviewed_by_doctype_doc'] == null
-        ? null
-        : DocType.fromJson(
-            json['reviewed_by_doctype_doc'] as Map<String, dynamic>)
     ..reviewedDoctype = json['reviewed_doctype'] as String
     ..reviewedEntity = json['reviewed_entity'] as String
     ..reviews = (json['reviews'] as List)
@@ -130,8 +126,6 @@ Map<String, dynamic> _$RenovationReviewToJson(RenovationReview instance) {
   writeNotNull('modified_by', instance.modifiedBy);
   writeNotNull('reviewed_by_doctype', instance.reviewedByDoctype);
   writeNotNull('reviewed_by', instance.reviewedBy);
-  writeNotNull(
-      'reviewed_by_doctype_doc', instance.reviewedByDoctypeDoc?.toJson());
   writeNotNull('reviewed_doctype', instance.reviewedDoctype);
   writeNotNull('reviewed_entity', instance.reviewedEntity);
   writeNotNull('reviews', instance.reviews?.map((e) => e?.toJson())?.toList());

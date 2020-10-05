@@ -117,7 +117,6 @@ class FrappeModelController extends ModelController<FrappeDocument> {
     var url =
         '${config.hostUrl}/api/resource/${Uri.encodeComponent(obj.doctype)}/${Uri.encodeComponent(docName)}';
     if (getFrappe().getAppsVersion('renovation_core') != null) {
-      unawaited(config.coreInstance.meta.getDocMeta(doctype: obj.doctype));
       url =
           '${config.hostUrl}/api/method/renovation/doc/${Uri.encodeComponent(obj.doctype)}/${Uri.encodeComponent(docName)}';
     }
@@ -419,13 +418,6 @@ class FrappeModelController extends ModelController<FrappeDocument> {
     EmptyDoctypeError.verify(doc.doctype);
     EmptyDocNameError.verify(doc.name);
 
-    final meta =
-        await getFrappeMetaController().getDocMeta(doctype: doc.doctype);
-
-    if (meta.isSuccess && !meta.data.isSubmittable) {
-      throw NotSubmittableDocError();
-    }
-
     final response = await Request.initiateRequest(
         url: config.hostUrl,
         method: HttpMethod.POST,
@@ -468,13 +460,6 @@ class FrappeModelController extends ModelController<FrappeDocument> {
 
     EmptyDoctypeError.verify(doc.doctype);
     EmptyDocNameError.verify(doc.name);
-
-    final meta =
-        await getFrappeMetaController().getDocMeta(doctype: doc.doctype);
-
-    if (meta.isSuccess && !meta.data.isSubmittable) {
-      throw NotSubmittableDocError();
-    }
 
     final response = await Request.initiateRequest(
         url: config.hostUrl,
